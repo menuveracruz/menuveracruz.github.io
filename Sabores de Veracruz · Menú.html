@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sabores de Veracruz · Menú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8ec;--card:#fff;--ink:#2b1a10;--mute:#7b6552;--acc:#d2441b;--acc2:#0e7c76;--gold:#e9a825;--line:#efdfc4;--shadow:0 6px 20px rgba(80,40,10,.10);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17110d;--card:#241c15;--ink:#f6ead8;--mute:#b8a38d;--acc:#ff7b4f;--acc2:#52c9c2;--gold:#f2b84a;--line:#3a2e22;--shadow:0 6px 20px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17110d;--card:#241c15;--ink:#f6ead8;--mute:#b8a38d;--acc:#ff7b4f;--acc2:#52c9c2;--gold:#f2b84a;--line:#3a2e22;--shadow:0 6px 20px rgba(0,0,0,.4);color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+.hero{position:relative;text-align:center;color:#fff;padding:64px 20px 70px;background:radial-gradient(circle at 20% 20%,#ff9a4a55,transparent 40%),radial-gradient(circle at 80% 70%,#25d0c755,transparent 45%),linear-gradient(135deg,#0b5f5a,#c8401a 70%,#e9a825);overflow:hidden}
+.flags{position:absolute;top:0;left:0;right:0;height:34px;display:flex;justify-content:space-around;opacity:.9}
+.flags i{width:36px;height:30px;background:var(--c);clip-path:polygon(0 0,100% 0,100% 80%,85% 100%,70% 80%,55% 100%,40% 80%,25% 100%,10% 80%,0 100%)}
+.hero small{letter-spacing:.3em;text-transform:uppercase;font-size:.75rem;opacity:.9}
+.hero h1{font-family:"Playfair Display",Georgia,serif;font-weight:800;font-size:clamp(2.4rem,9vw,4.6rem);line-height:1.05;margin:12px 0}
+.hero p{max-width:520px;margin:0 auto 22px;opacity:.95}
+.cta{display:inline-block;background:#fff;color:#a8300f;font-weight:600;padding:12px 26px;border-radius:999px;text-decoration:none;box-shadow:var(--shadow)}
+.stats{display:flex;justify-content:center;gap:28px;margin-top:28px;font-size:.85rem}
+.stats b{display:block;font-size:1.5rem;font-family:"Playfair Display",Georgia,serif}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 12px}
+.bar input{width:100%;max-width:560px;display:block;margin:0 auto 8px;padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+.chips{display:flex;gap:8px;overflow-x:auto;max-width:900px;margin:0 auto;padding-bottom:2px}
+.chips button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 14px;border-radius:999px;font:inherit;font-size:.88rem;cursor:pointer}
+.chips button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+main{max-width:980px;margin:0 auto;padding:10px 16px 150px}
+h2{font-family:"Playfair Display",Georgia,serif;font-size:1.8rem;margin:34px 0 4px;display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.sub{color:var(--mute);margin:0 0 14px;font-size:.9rem}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;transition:transform .2s}
+.card:hover{transform:translateY(-3px)}
+.top{display:flex;gap:12px;align-items:center}
+.em{font-size:2rem;width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--line),transparent);flex:none}
+.card h3{margin:0;font-size:1.02rem;line-height:1.25}
+.card p{margin:0;color:var(--mute);font-size:.88rem;flex:1}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.7rem;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--mute)}
+.foot{display:flex;justify-content:space-between;align-items:center}
+.price{font-weight:600;color:var(--acc);font-size:1.1rem}
+.add{border:0;background:var(--acc2);color:#fff;border-radius:999px;padding:8px 16px;font:inherit;font-weight:600;cursor:pointer}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:30px;height:30px;border-radius:50%;border:1px solid var(--acc2);background:none;color:var(--acc2);font-size:1.1rem;cursor:pointer}
+.empty{text-align:center;color:var(--mute);padding:40px}
+.cartbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;max-width:560px;margin:0 auto;background:var(--ink);color:var(--bg);border-radius:18px;padding:12px 18px;display:none;justify-content:space-between;align-items:center;box-shadow:var(--shadow);cursor:pointer}
+.cartbar.show{display:flex}
+.sheet{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center}
+.sheet.show{display:flex}
+.panel{background:var(--card);width:100%;max-width:560px;max-height:85%;overflow:auto;border-radius:20px 20px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px))}
+.panel h2{margin-top:0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.total{display:flex;justify-content:space-between;font-weight:600;font-size:1.2rem;margin:14px 0}
+.panel textarea,.panel input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;margin-bottom:10px}
+.btn{display:block;width:100%;text-align:center;padding:13px;border-radius:12px;border:0;font:inherit;font-weight:600;cursor:pointer;text-decoration:none;margin-top:8px}
+.wa{background:#1fa855;color:#fff}.sec{background:var(--line);color:var(--ink)}
+footer{text-align:center;color:var(--mute);padding:30px 16px 120px;font-size:.85rem}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="flags" id="flags"></div>
+<small>Cocina del Golfo de México</small>
+<h1>Sabores de Veracruz</h1>
+<p>Del puerto a la calle: mariscos frescos, antojitos de comal, café de altura y dulces de abuela.</p>
+<a class="cta" href="#menu">Ver el menú</a>
+<div class="stats"><div><b>40+</b>platillos</div><div><b>6</b>secciones</div><div><b>100%</b>jarocho</div></div>
+</header>
+<div class="bar" id="menu">
+<input id="q" type="search" placeholder="Buscar platillo… (camarón, tamal, café)">
+<div class="chips" id="chips"></div>
+</div>
+<main id="main"></main>
+<footer>Precios de ejemplo en pesos mexicanos. Pregunta por el platillo del día.</footer>
+<div class="cartbar" id="cartbar"><span id="cc"></span><b id="ct"></b></div>
+<div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
+<script>
+// CONFIGURA AQUÍ: número de WhatsApp (con lada del país) y nombre del restaurante
+const WA="5210000000000",NAME="Sabores de Veracruz";
+// [categoría, emoji, nombre, descripción, precio, etiquetas]
+const D=[
+["Antojitos","🫓","Empanadas de camarón","Masa de maíz frita rellena de camarón o queso.",55,"Mar"],
+["Antojitos","🌶️","Picadas","Tortillas gruesas con salsa roja o verde, cebolla y queso fresco.",65,"Picante|Vegetariano"],
+["Antojitos","🫘","Gorditas de frijol negro","Rellenas y doradas en comal.",50,"Vegetariano"],
+["Antojitos","🥩","Tlayuda de tasajo","Con frijol, queso y tasajo asado.",120,""],
+["Antojitos","🌽","Tamales de elote o cerdo","En hoja de plátano, suaves y aromáticos.",45,""],
+["Antojitos","🦀","Tostada de jaiba o pulpo","Con limón, cebolla morada y salsa.",75,"Mar"],
+["Antojitos","🍌","Plátanos machos fritos","Con crema y queso, dulces y salados.",70,"Vegetariano"],
+["Antojitos","🍲","Chilpachole en taza","Caldo picoso de jaiba para compartir.",85,"Picante|Mar"],
+["Del mar","🍤","Coctel de camarón","Salsa de jitomate, cebolla, cilantro y aguacate.",160,"Mar"],
+["Del mar","🐟","Ceviche de pescado","Marinado en limón con chile y cilantro.",140,"Mar|Picante"],
+["Del mar","🐚","Callos de hacha","Frescos, con limón y salsa picante.",190,"Mar"],
+["Del mar","🦪","Ostiones frescos (6 pzas)","Al natural o con salsa.",150,"Mar"],
+["Caldos","🍲","Chilpachole","Chile y epazote con pescado o jaiba.",150,"Picante|Mar"],
+["Caldos","🥣","Sopa de frijol negro","Con plátano macho, crema y queso.",90,"Vegetariano"],
+["Caldos","🍚","Arroz a la tumbada","Arroz caldoso con mariscos mixtos.",210,"Mar"],
+["Platos fuertes","🐟","Huachinango a la veracruzana","Jitomate, aceitunas, alcaparras y chiles güeros.",260,"Mar|Clásico"],
+["Platos fuertes","🍽️","Pescado a la veracruzana","La versión clásica con arroz blanco.",190,"Mar|Clásico"],
+["Platos fuertes","🌿","Pescado empapelado","Al vapor en hoja de plátano con hierbas y chile.",200,"Mar"],
+["Platos fuertes","🦐","Camarones al mojo de ajo","Salteados en ajo dorado, con arroz y ensalada.",230,"Mar"],
+["Platos fuertes","🐙","Pulpo a la veracruzana","Tierno, en salsa de jitomate con aceitunas.",270,"Mar"],
+["Platos fuertes","🥩","Tasajo con frijoles","Carne seca asada con plátano macho.",180,""],
+["Platos fuertes","🍫","Mole veracruzano","Mole dulce con pollo o cerdo.",170,""],
+["Platos fuertes","🌮","Tacos de cecina (3)","Con cebolla y salsa.",95,""],
+["Postres","🌽","Pan de elote","Húmedo y dorado.",55,"Vegetariano"],
+["Postres","🍯","Buñuelos con piloncillo","Crujientes, bañados en miel.",60,"Vegetariano"],
+["Postres","🍌","Plátano frito con leche condensada","Caliente y caramelizado.",65,"Vegetariano"],
+["Postres","🍨","Helado de mamey o vainilla","Vainilla de Papantla.",60,"Vegetariano"],
+["Postres","🥥","Dulce de coco y nuez","Conserva tradicional.",45,"Vegetariano"],
+["Bebidas","🍓","Torito","Fruta con aguardiente: cacahuate, nuez o fresa.",75,"Clásico"],
+["Bebidas","☕","Café de Coatepec","Café de altura, puro y aromático.",40,""],
+["Bebidas","🥛","Agua de horchata","Fría y cremosa.",35,"Vegetariano"],
+["Bebidas","🌺","Agua de jamaica","Refrescante.",35,"Vegetariano"],
+["Bebidas","🍋","Limonada","Natural o mineral.",35,"Vegetariano"],
+["Bebidas","🥤","Refresco de jengibre o tamarindo","Artesanal.",40,"Vegetariano"]
+].map((r,i)=>({id:i,c:r[0],e:r[1],n:r[2],d:r[3],p:r[4],t:r[5]?r[5].split("|"):[]}));
+const CATS=[...new Set(D.map(x=>x.c))];
+const SUB={"Antojitos":"Lo que se come de pie y con las manos","Del mar":"Frescos del Golfo","Caldos":"Para el alma","Platos fuertes":"La cocina jarocha clásica","Postres":"Para el final feliz","Bebidas":"Del campo y del puerto"};
+let cat="Todo",q="",cart={};
+try{const s=localStorage.getItem("cartV");if(s)cart=JSON.parse(s)||{}}catch(e){}
+const $=id=>document.getElementById(id),money=n=>"$"+n.toLocaleString("es-MX");
+function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+const cols=["#d2441b","#e9a825","#0e7c76","#c2185b","#3b82c4","#6aa84f"];
+for(let i=0;i<14;i++){const f=el("i");f.style.setProperty("--c",cols[i%6]);$("flags").appendChild(f)}
+function save(){try{localStorage.setItem("cartV",JSON.stringify(cart))}catch(e){}}
+function chg(id,d){cart[id]=Math.max(0,(cart[id]||0)+d);if(!cart[id])delete cart[id];save();draw();bar();if($("sheet").classList.contains("show"))sheet()}
+function chips(){const c=$("chips");c.replaceChildren();["Todo",...CATS].forEach(n=>{const b=el("button",n===cat?"on":"",n);b.onclick=()=>{cat=n;chips();draw()};c.appendChild(b)})}
+function ctl(x){const w=el("div","foot");w.appendChild(el("span","price",money(x.p)));
+if(cart[x.id]){const q=el("div","qty");const m=el("button","","−"),p=el("button","","+");m.onclick=()=>chg(x.id,-1);p.onclick=()=>chg(x.id,1);q.append(m,el("b","",cart[x.id]),p);w.appendChild(q)}
+else{const a=el("button","add","Agregar");a.onclick=()=>chg(x.id,1);w.appendChild(a)}return w}
+function draw(){const m=$("main");m.replaceChildren();let any=false;
+CATS.forEach(c=>{if(cat!=="Todo"&&cat!==c)return;
+const it=D.filter(x=>x.c===c&&(x.n+x.d+x.t.join(" ")).toLowerCase().includes(q));if(!it.length)return;any=true;
+m.appendChild(el("h2","",c));m.appendChild(el("p","sub",SUB[c]));const g=el("div","grid");
+it.forEach(x=>{const k=el("div","card"),t=el("div","top");t.appendChild(el("div","em",x.e));t.appendChild(el("h3","",x.n));k.appendChild(t);k.appendChild(el("p","",x.d));
+if(x.t.length){const tg=el("div","tags");x.t.forEach(s=>tg.appendChild(el("span","tag",s)));k.appendChild(tg)}
+k.appendChild(ctl(x));g.appendChild(k)});m.appendChild(g)});
+if(!any)m.appendChild(el("div","empty","No encontramos ese platillo. Prueba con otra palabra."))}
+function tot(){let n=0,s=0;D.forEach(x=>{if(cart[x.id]){n+=cart[x.id];s+=cart[x.id]*x.p}});return[n,s]}
+function bar(){const[n,s]=tot(),b=$("cartbar");b.classList.toggle("show",n>0);$("cc").textContent="🛒 Ver pedido · "+n+(n==1?" platillo":" platillos");$("ct").textContent=money(s)}
+function msg(nm,note){let l=["Hola, quiero hacer un pedido en "+NAME+":",""];D.forEach(x=>{if(cart[x.id])l.push(cart[x.id]+" × "+x.n+" — "+money(cart[x.id]*x.p))});
+l.push("","Total: "+money(tot()[1]));if(nm)l.push("Nombre: "+nm);if(note)l.push("Notas: "+note);return l.join("\n")}
+function sheet(){const p=$("panel"),nm=p.querySelector("#nm"),nt=p.querySelector("#nt"),v1=nm?nm.value:"",v2=nt?nt.value:"";p.replaceChildren();
+p.appendChild(el("h2","","Tu pedido"));
+if(!tot()[0]){p.appendChild(el("div","empty","Aún no agregas nada."))}
+D.forEach(x=>{if(!cart[x.id])return;const r=el("div","row");const a=el("div");a.appendChild(el("b","",x.e+" "+x.n));a.appendChild(el("div","sub",money(x.p)+" c/u"));
+const q=el("div","qty"),m=el("button","","−"),pl=el("button","","+");m.onclick=()=>chg(x.id,-1);pl.onclick=()=>chg(x.id,1);q.append(m,el("b","",cart[x.id]),pl);r.append(a,q);p.appendChild(r)});
+const t=el("div","total");t.append(el("span","","Total"),el("span","",money(tot()[1])));p.appendChild(t);
+const i=el("input");i.id="nm";i.placeholder="Tu nombre";i.value=v1;const a=el("textarea");a.id="nt";a.rows=2;a.placeholder="Notas (sin picante, para llevar…)";a.value=v2;p.append(i,a);
+const w=el("a","btn wa","Enviar pedido por WhatsApp");w.href="#";w.onclick=e=>{e.preventDefault();window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg(i.value,a.value)),"_blank")};
+const c=el("button","btn sec","Seguir viendo el menú");c.onclick=()=>$("sheet").classList.remove("show");
+if(tot()[0])p.appendChild(w);p.appendChild(c)}
+$("cartbar").onclick=()=>{sheet();$("sheet").classList.add("show")};
+$("sheet").onclick=e=>{if(e.target.id==="sheet")$("sheet").classList.remove("show")};
+$("q").oninput=e=>{q=e.target.value.toLowerCase().trim();draw()};
+chips();draw();bar();
+</script>
+</body>
+</html>
